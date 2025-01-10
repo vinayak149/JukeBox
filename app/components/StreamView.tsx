@@ -43,10 +43,16 @@ export default function StreamView({
   const videoPlayerRef = useRef<HTMLDivElement>();
   const REFRESH_INTERVAL_MS = 10 * 1000
 
+  if (!creatorId) {
+    console.log("creatorId required")
+  }
+
   async function refreshStreams() {
     const res = await fetch(`/api/streams/?creatorId=${creatorId}`, {
       credentials: "include"
     });
+    const text = await res.text()
+    console.log("res console__________" + text);
     const json = await res.json()
     setQueue(json.streams.sort((a: any, b: any) => a.upvotes < b.upvotes ? -1 : 1))
     setCurrentVideo(video => {
@@ -91,10 +97,10 @@ export default function StreamView({
     }
     let player = YouTubePlayer(videoPlayerRef.current);
 
-    
+
     player.loadVideoById(currentVideo?.extractedId);
 
-    
+
     player.playVideo();
     function eventHandler(event: any) {
       if (event.data === 0) {
@@ -102,11 +108,11 @@ export default function StreamView({
       }
     }
 
-    
-    player.on('stateChange',eventHandler);
+
+    player.on('stateChange', eventHandler);
 
     return () => {
-      
+
       player.destroy();
     }
   }, [currentVideo, videoPlayerRef])

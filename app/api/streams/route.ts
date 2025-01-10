@@ -110,7 +110,9 @@ export async function GET(req: NextRequest) {
         }
 
     });
-    // console.log(session, session?.user, user);
+    console.log(session, session?.user, user);
+    console.log("creator id now")
+    console.log(creatorId);
 
     if (!user) {
         return NextResponse.json(

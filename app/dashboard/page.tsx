@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { toast } from 'react-toastify';
 import { ThumbsUp, ThumbsDown, ChevronRight, Share2 } from "lucide-react";
 import StreamView from '../components/StreamView';
+import { useSession } from 'next-auth/react';
 
 
 interface Video{
@@ -29,5 +30,15 @@ interface Video{
 
 export default function SongVotingQueue() {
   //check the creatorId
-  return <StreamView creatorId={user.id} playVideo={true} />
+  const { data: session, status } = useSession()
+  
+  if (status === "loading") {
+    return <div>Loading...</div>
+  }
+
+  if (!session?.user) {
+    return <div>Unable to load user data</div>
+  }
+
+  return <StreamView creatorId={session.user.id} playVideo={true} />
 }

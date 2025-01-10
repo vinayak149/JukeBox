@@ -55,7 +55,7 @@ export default function LandingPage() {
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Join FanTune Today</h2>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Join Jonkybox Today</h2>
               <div className="w-full max-w-sm space-y-2">
                 <form className="flex space-x-2">
                   <Input className="max-w-lg flex-1 bg-blue-800 bg-opacity-50 border-blue-700 text-white" placeholder="Enter your email" type="email" />
@@ -67,7 +67,7 @@ export default function LandingPage() {
         </section>
       </main>
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t border-blue-800">
-        <p className="text-xs text-gray-300">© 2023 FanTune. All rights reserved.</p>
+        <p className="text-xs text-gray-300">© 2023 Jonkybox. All rights reserved.</p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
           <Link className="text-xs hover:text-teal-400" href="#">
             Terms

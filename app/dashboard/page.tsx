@@ -39,6 +39,7 @@ export default function SongVotingQueue() {
   if (!session?.user) {
     return <div>Unable to load user data</div>
   }
-
+  console.log(session)
+  console.log(session.user)
   return <StreamView creatorId={session.user.id} playVideo={true} />
 }

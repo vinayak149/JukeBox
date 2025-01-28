@@ -48,11 +48,12 @@ export default function StreamView({
   }
 
   async function refreshStreams() {
+    console.log(creatorId)
     const res = await fetch(`/api/streams/?creatorId=${creatorId}`, {
       credentials: "include"
     });
-    const text = await res.text()
-    console.log("res console__________" + text);
+    // const text = await res.text()
+    // console.log("res console__________" + text);
     const json = await res.json()
     setQueue(json.streams.sort((a: any, b: any) => a.upvotes < b.upvotes ? -1 : 1))
     setCurrentVideo(video => {
@@ -78,7 +79,7 @@ export default function StreamView({
     const res = await fetch("/api/streams", {
       method: "POST",
       body: JSON.stringify({
-        creatorId: "7bca0a73-a1db-49c7-91b2-ecbce04e2b8e",
+        creatorId: creatorId,
         url: newLink,
       })
     });
